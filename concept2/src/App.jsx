@@ -1,10 +1,12 @@
-import { useState } from "react";
+import Starter from "./tutorial/01-useState/starter/03-useState-array";
 import "./App.css";
 
 function App() {
-  const [count, setCount] = useState(0);
-
-  return <h2>hey Boy!</h2>;
+  return (
+    <div className="container">
+      <Starter />
+    </div>
+  );
 }
 
 export default App;

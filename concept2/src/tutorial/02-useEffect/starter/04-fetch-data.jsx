@@ -1,6 +1,17 @@
-const url = 'https://api.github.com/users';
+import { useEffect, useState } from "react";
+
+const url = "https://api.github.com/users";
 
 const FetchData = () => {
-  return <h2>fetch data example</h2>;
+  const [users, setUsers] = useState(0);
+
+  useEffect(() => {
+    console.log(users);
+  }, []);
+  return (
+    <>
+      <h3>Fetch Data Example</h3>
+    </>
+  );
 };
 export default FetchData;

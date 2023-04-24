@@ -10,7 +10,7 @@ const FetchData = () => {
   }, []);
   return (
     <>
-      <h3>Fetch Data Example</h3>
+      <h3>Fetch Data Example 69</h3>
     </>
   );
 };

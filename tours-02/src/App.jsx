@@ -34,16 +34,14 @@ function App() {
     );
   }
 
-  const removeItem = (id) => {
-    const newTours = tours.filter(() => {
-      tours.id != id;
-      setTours(newTours);
-    });
+  const removeTour = (id) => {
+    const newTours = tours.filter((tour) => tour.id != id);
+    setTours(newTours);
   };
 
   return (
     <>
-      <Tours tours={tours} removeTour={removeItem} />
+      <Tours tours={tours} removeTour={removeTour} fetchTours={fetchTours} />
     </>
   );
 }

@@ -5,7 +5,7 @@ function Menu() {
   return (
     <section>
       {menu.map((menuItem) => {
-        return <MenuItem key={menuItem.id} {...MenuItem} />;
+        return <MenuItem key={menuItem.id} {...menuItem} />;
       })}
     </section>
   );

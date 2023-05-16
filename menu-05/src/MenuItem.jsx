@@ -1,12 +1,13 @@
 import React from "react";
 
-function MenuItem(props) {
+function MenuItem({ img, title, price, desc }) {
   return (
     <article>
-      <img src={props.img} alt={props.title} />
+      <img src={img} alt={title} />
       <div>
-        <h2>{props.title}</h2>
-        <span>${props.price}</span>
+        <h2>{title}</h2>
+        <span>${price}</span>
+        <p>{desc}</p>
       </div>
     </article>
   );

@@ -4,10 +4,8 @@ const Duties = ({ duties }) => {
   return (
     <div>
       {duties.map((duty, index) => {
-        const id = uuidv4();
-        // console.log(id);
         return (
-          <div key={id} className="job-desc">
+          <div key={uuidv4()} className="job-desc">
             <p>{duty}</p>
           </div>
         );

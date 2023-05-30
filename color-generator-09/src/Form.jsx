@@ -1,10 +1,12 @@
 import React from "react";
 import { useState } from "react";
 
-function Form() {
+function Form({ addColor }) {
   const [color, setColor] = useState(0);
   const handleSubmit = (e) => {
-    e.target.value;
+    e.preventDefault();
+    addColor(color);
+    console.log(color);
   };
   console.log(color);
   return (

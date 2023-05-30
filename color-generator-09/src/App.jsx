@@ -1,12 +1,18 @@
 import { useState } from "react";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
+import ColorList from "./ColorList";
+import Form from "./Form";
+import Values from "values.js";
 import "./App.css";
 
 function App() {
-  const [count, setCount] = useState(0);
+  const [colors, setColors] = useState(new Values("#f13528").all(10));
 
-  return <></>;
+  return (
+    <>
+      <Form />
+      <ColorList colors={colors} />
+    </>
+  );
 }
 
 export default App;

@@ -1,27 +1,28 @@
-import React, { useState } from "react";
+import React, { useEffect } from "react";
+import { useState } from "react";
 
-function Forms({ addItem }) {
+function Form({ addItem }) {
   const [newItemName, setNewItemName] = useState("");
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(newItemName);
     if (!newItemName) return;
     addItem(newItemName);
+    console.log(newItemName);
     setNewItemName("");
   };
   return (
-    <section>
-      <h2>GROCERY BUD</h2>
-      <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit}>
+      <h4>GROCERY STORE</h4>
+      <div>
         <input
           type="text"
           value={newItemName}
           onChange={(event) => setNewItemName(event.target.value)}
         />
         <button type="submit">Add Item</button>
-      </form>
-    </section>
+      </div>
+    </form>
   );
 }
 
-export default Forms;
+export default Form;

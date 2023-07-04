@@ -1,17 +1,13 @@
 import React from "react";
-import { nanoid } from "nanoid";
+import SingleItem from "./SingleItem";
 
-function Items({ items }) {
+function Items({ items, removeItem }) {
   return (
-    <h4>
+    <div>
       {items.map((item) => {
-        return (
-          <div key={nanoid()}>
-            <h2>{item.name}</h2>
-          </div>
-        );
+        return <SingleItem key={item.id} item={item} removeItem={removeItem} />;
       })}
-    </h4>
+    </div>
   );
 }
 

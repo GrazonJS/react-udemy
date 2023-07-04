@@ -1,25 +1,40 @@
 import { useState } from "react";
 import "./App.css";
-import Forms from "./Forms";
+import Form from "./Form";
 import Items from "./Items";
 import { nanoid } from "nanoid";
 
+const setLocalStorage = (items) => {
+  localStorage.setItem("list", JSON.stringify(items));
+};
+
 function App() {
   const [items, setItems] = useState([]);
-  const addItem = (newItemName) => {
+  console.log(items);
+
+  const addItem = (itemName) => {
     const newItem = {
-      name: newItemName,
+      name: itemName,
       completed: false,
       id: nanoid(),
     };
-    setItems((prevItems) => [...prevItems, newItem]);
+    const newItems = [...items, newItem];
+    setItems(newItems);
+    setLocalStorage(newItems);
   };
-  console.log(items);
+
+  const removeItem = (itemId) => {
+    const newItem = items.filter((item) => item.id !== itemId);
+    setItems(newItem);
+    setLocalStorage(newItem);
+  };
+
   return (
-    <main>
-      <Forms addItem={addItem} />
-      <Items items={items} />
-    </main>
+    <>
+      <Form addItem={addItem} />
+      <h5>Items</h5>
+      <Items items={items} removeItem={removeItem} />
+    </>
   );
 }
 

@@ -1,13 +1,15 @@
 import React from "react";
+import { useAppContext } from "./Navbar";
 
 function UserContainer() {
-  return <p>hello</p>;
+  const { user, logout } = useAppContext();
+
   return (
     <div className="user-container">
       {user ? (
         <>
           <p>Hello There, {user?.name?.toUpperCase()}</p>
-          <button>logout</button>
+          <button onClick={logout}>logout</button>
         </>
       ) : (
         <p>Please Login</p>

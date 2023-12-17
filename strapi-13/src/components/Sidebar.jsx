@@ -13,7 +13,6 @@ function Sidebar() {
         </button>
         <div className="sidebar-links">
           {sublinks.map((item) => {
-            console.log(item);
             const { pageId, page, links } = item;
             return (
               <article key={pageId}>

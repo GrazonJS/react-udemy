@@ -5,10 +5,11 @@ import {
   Landing,
   Error,
   NewsLetter,
-  CocktailList,
+  Cocktail,
 } from "./pages/Index";
 import { loader as landingLoader } from "./pages/Landing";
 import { loader as singleCocktailLoader } from "./pages/Cocktail";
+import { action as newsLetterAction } from "./pages/NewsLetter";
 
 const router = createBrowserRouter([
   {
@@ -23,12 +24,13 @@ const router = createBrowserRouter([
       },
       {
         path: "cocktail/:id",
-        element: <CocktailList />,
+        element: <Cocktail />,
         loader: singleCocktailLoader,
       },
       {
         path: "newsLetter",
         element: <NewsLetter />,
+        action: newsLetterAction,
       },
       {
         path: "about",

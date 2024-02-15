@@ -1,5 +1,5 @@
 import React from "react";
-import { Form, redirect } from "react-router-dom";
+import { Form, redirect, useNavigation } from "react-router-dom";
 import axios from "axios";
 import { toast } from "react-toastify";
 
@@ -8,13 +8,20 @@ const newsLetterUrl = "https://www.course-api.com/cocktails-newsletter";
 export const action = async ({ request }) => {
   const formData = await request.formData();
   const data = Object.fromEntries(formData);
-  console.log(data);
-  const response = await axios.post(newsLetterUrl, data);
-  toast.success(response.data.msg);
-  return redirect("/");
+  try {
+    const response = await axios.post(newsLetterUrl, data);
+    toast.success(response.data.msg);
+    return redirect("/");
+  } catch (error) {
+    toast.error(error?.response?.data?.msg);
+    return error;
+  }
 };
 
 function NewsLetter() {
+  const navigation = useNavigation();
+  console.log(navigation);
+  const isSubmitting = navigation.state === "submitting";
   return (
     <Form className="form" method="POST">
       <h4 style={{ textAlign: "center", marginBottom: "2rem" }}>
@@ -24,7 +31,13 @@ function NewsLetter() {
         <label htmlFor="name" className="form-label">
           name
         </label>
-        <input type="text" name="name" id="name" className="form-input" />
+        <input
+          type="text"
+          name="name"
+          id="name"
+          className="form-input"
+          required
+        />
       </div>
 
       <div className="form-row">
@@ -36,20 +49,29 @@ function NewsLetter() {
           name="lastName"
           className="form-input"
           id="lastName"
+          required
         />
       </div>
       <div className="form-row">
         <label htmlFor="email" className="form-label">
           email
         </label>
-        <input type="email" name="email" className="form-input" id="email" />
+        <input
+          type="email"
+          name="email"
+          className="form-input"
+          id="email"
+          defaultValue="test@test.com"
+          required
+        />
       </div>
       <button
         type="submit"
         className="btn btn-block"
         style={{ marginTop: "0.5rem" }}
+        disabled={isSubmitting}
       >
-        submit
+        {isSubmitting ? "Submitting" : "Submit"}
       </button>
     </Form>
   );

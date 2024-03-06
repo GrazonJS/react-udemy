@@ -29,12 +29,12 @@ const router = createBrowserRouter([
       {
         index: true,
         element: <Landing />,
-        loader: landingLoader,
+        loader: landingLoader(queryClient),
       },
       {
         path: "cocktail/:id",
         element: <Cocktail />,
-        loader: singleCocktailLoader,
+        loader: singleCocktailLoader(queryClient),
       },
       {
         path: "newsLetter",
